@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Temp Sticky Note | CypherMonk</title>
+	<meta name="google-site-verification" content="cWKCfpsfB8hmFfOZG-pf_ZUNKKBKmenwVWEL-P-bk7A" />
+	<style>
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab,#000);
+	background-size: 400% 400%;
+	animation: gradient 100s ease infinite;
+	font: 14px sans-serif;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+		header, footer{
+			text-align: center;
+		}
+
+		footer{
+
+		}
+
+		h1{color:#fff;}
+.paramera{padding: 20px;}
+.letter {
+  background: #ffe185;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  margin: 26px auto 0;
+  max-width: 850px;
+  min-height: 500px;
+  padding: 24px;
+  position: relative;
+  width: 80%;
+}
+.letter:before, .letter:after {
+  content: "";
+  height: 98%;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.letter:before {
+  background: #ffd451;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  left: -5px;
+  top: 4px;
+  transform: rotate(-2.5deg);
+}
+.letter:after {
+  background: #ffd451;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+  right: -3px;
+  top: 1px;
+  transform: rotate(1.4deg);
+}
+		.clear{
+			text-decoration: none;
+			background:#e55959;
+			color:#fff;
+			padding:10px;
+		}
+	</style>
+	<script>
+		function getNote(){
+			if(localStorage.getItem('temp_note')){
+				var temp_note = localStorage.getItem('temp_note');
+			} else {
+				var temp_note = 'Write your note here....';
+			}
+
+			document.getElementById('temp_note').innerHTML= temp_note;
+		}
+
+		function saveNote(id){
+			var temp_note = document.getElementById('temp_note').innerHTML;
+			localStorage.setItem('temp_note', temp_note);
+		}
+
+		function clearNote(){
+			clear: localStorage.clear();
+			return false;
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<h1>Temp Sticky Note</h1>
+	</header>
+
+
+
+
+		<section class="letter">
+  	<div>
+			<a href="" onclick="javascript:clearNote();" class="clear">Clear Note</a>
+		</div><br><br>
+  <p class="paramera" id="temp_note" contenteditable="true" onkeyup="saveNote(this.id)"></p>
+
+
+
+	</section>
+ <br><br><br><br>
+
+	<script>
+		getNote();
+	</script>
+
+		<footer>
+	
+		<p><a href="https://cyphermonk.com/">CypherMonk</a> &copy; 2020</p>
+	</footer>
+
+</body>
+</html>
